@@ -1,0 +1,63 @@
+﻿@model Governorate
+
+    <div>
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>المحافظات</h2>
+                    <ol>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li>  المحافظات  </li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <section>
+
+            <form asp-action="InsertGovernment">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label asp-for="Governorate_ArName"> المحافظة  </label>
+                                <input asp-for="Governorate_ArName" type="text" class="form-control" id="gov">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <br><br>
+                            <input type="submit" class="btn btn-primary" value="حفظ">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <table class="table table-responsive table-striped">
+                                <thead>
+                                    <tr>
+                                        <th> م </th>
+                                        <th style="width:400px"> المحافظة </th>
+                                        <th>  </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var count = 1;
+                                    }
+                                    @foreach (var item in ViewBag.Govs)
+                                    {
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Governorate_ArName</td>
+                                            <td><a asp-action="DeleteGovernment" asp-route-id="@item.Governorate_ID" onclick="return confirm('هل تريد حذف المحافظة : @item.Governorate_ArName ؟')">حذف</a></td>
+                                        </tr>
+                                        count++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div> 

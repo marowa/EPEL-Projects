@@ -1,0 +1,60 @@
+﻿@model Service
+
+<div>
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2> الخدمات </h2>
+                <ol>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li>  الخدمات  </li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+    <section>
+
+        <form asp-action="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Service_Name"> اسم الخدمة  </label>
+                            <input asp-for="Service_Name" type="text" class="form-control" id="serviceName">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <br><br>
+                        <input type="submit" class="btn btn-primary" value="حفظ">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th> م </th>
+                                    <th style="width:400px"> الخدمة </th>
+                                    <th>  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.services)
+                                {
+                                    <tr>
+                                        <td>@item.Service_ID</td>
+                                        <td>@item.Service_Name</td>
+                                        @*<td><a asp-action="" asp-route-id="@item.Service_ID" onclick="return confirm('هل تريد حذف الخدمة : @item.Service.Name ؟')">حذف</a></td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
